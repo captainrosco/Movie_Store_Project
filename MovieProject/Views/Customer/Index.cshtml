@@ -1,0 +1,25 @@
+﻿@model MovieProject.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Discount Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.Customer)
+        {
+            <tr>
+                <td>@Html.ActionLink(@person.Name, "Edit", "Customer", new { id = person.Id }, null)</td>
+                <td>@person.MembershipType.MembershipName</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model MovieProject.ViewModels.NewMovieViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    var date = DateTime.Today.ToString();
+}
+<h2>New Movie</h2>
+@using (Html.BeginForm("New", "Movies"))
+{
+    <div class="form-gorup">
+        @Html.LabelFor(m => m.Movie.Name)
+        @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.Name)
+    </div>
+    <div class="form-gorup top-margin">
+        <label>Release Date</label>
+        @Html.TextBoxFor(m => m.Movie.ReleaseDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
+    </div>
+    <div class="form-gorup top-margin">
+        @Html.LabelFor(m => m.Movie.Genre)
+        @Html.DropDownListFor(m => m.Movie.Genre, new List<SelectListItem> {
+                                                                            new SelectListItem {Text = "Comedy", Value="comedy"},
+                                                                            new SelectListItem {Text = "Horror", Value="Horror"},
+                                                                            new SelectListItem {Text = "Drama", Value="Drama"},
+                                                                            new SelectListItem {Text = "Action", Value="Action"},
+                                                                            }, "Select Movie Genre", new { @class = "form-control" })
+    </div>
+    <div class="form-gorup top-margin">
+        @Html.LabelFor(m => m.Movie.Stock)
+        @Html.TextBoxFor(m => m.Movie.Stock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m =>m.Movie.Stock)
+    </div>
+       
+        @Html.HiddenFor(m => m.Movie.Id)
+        <button type="submit" class="btn btn-primary top-margin">Save</button>
+
+}
+
+

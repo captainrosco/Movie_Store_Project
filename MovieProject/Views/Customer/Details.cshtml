@@ -1,0 +1,14 @@
+﻿@model MovieProject.Models.Customer
+@{
+    ViewBag.Title = "Detials";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+@{
+    if (Model.Birthdate != null)
+    {
+        <h4> Birhdate: @Model.Birthdate </h4>
+    }
+}
+<h4>Subscription Plan: @Model.MembershipType.MembershipName</h4>

@@ -1,0 +1,27 @@
+﻿@model MovieProject.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Movie List</h2>
+@Html.ActionLink("New Movie", "Create", "Movies", null, new { @class = "btn btn-primary" })
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Movies</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Movie in Model.Movie)
+        {
+            <tr>
+                <td>@Html.ActionLink(@Movie.Name, "Details", "Movies", new { id = Movie.Id }, null)</td>
+                <td>@Movie.Genre</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
